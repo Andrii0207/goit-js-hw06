@@ -9,11 +9,28 @@ const refs = {
   boxes: document.querySelector('#boxes'),
 };
 
-refs.create.addEventListener('click', createBoxes);
+refs.create.addEventListener('click', renderBox);
+refs.destroy.addEventListener('click', destroyBox);
+
+function renderBox() {
+  createBoxes(refs.input.value);
+}
+
+const boxesList = [];
 
 function createBoxes(amount) {
-  amount = refs.input.value;
-  console.dir(refs.input.value);
+  for (let i = 1; i <= amount; i += 1) {
+    const box = document.createElement('div');
+    box.style.width = `${20 + 10 * i}px`;
+    box.style.height = `${20 + 10 * i}px`;
+    box.style.backgroundColor = `${getRandomHexColor()}`;
+    console.log(box);
+    boxesList.push(box);
+  }
 
-  refs.boxes.createElement('<div></div>');
+  refs.boxes.append(...boxesList);
+}
+
+function destroyBox() {
+  refs.boxes.innerHTML = '';
 }
