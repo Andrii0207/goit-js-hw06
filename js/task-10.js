@@ -33,4 +33,5 @@ function createBoxes(amount) {
 
 function destroyBoxes() {
   refs.boxes.innerHTML = '';
+  refs.input.value = '';
 }
