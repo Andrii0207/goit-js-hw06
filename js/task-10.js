@@ -10,15 +10,15 @@ const refs = {
 };
 
 refs.create.addEventListener('click', renderBox);
-refs.destroy.addEventListener('click', destroyBox);
+refs.destroy.addEventListener('click', destroyBoxes);
 
 function renderBox() {
   createBoxes(refs.input.value);
 }
 
-const boxesList = [];
-
 function createBoxes(amount) {
+  const boxesList = [];
+
   for (let i = 1; i <= amount; i += 1) {
     const box = document.createElement('div');
     box.style.width = `${20 + 10 * i}px`;
@@ -31,6 +31,6 @@ function createBoxes(amount) {
   refs.boxes.append(...boxesList);
 }
 
-function destroyBox() {
+function destroyBoxes() {
   refs.boxes.innerHTML = '';
 }
